@@ -14,4 +14,10 @@
    		SELECT count(*) FROM fbmember WHERE mid=#{param1}   
    </select>
    
+   <select id="checkIdPwDao" resultType="int">
+   		SELECT count(*) FROM fbmember WHERE mid=#{param1} AND mpw=#{param2}  
+   </select>
+   
+      
+   
  </mapper>
