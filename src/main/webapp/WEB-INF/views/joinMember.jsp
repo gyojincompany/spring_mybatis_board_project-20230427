@@ -10,7 +10,7 @@
 	<h2>회원 가입</h2>
 	<hr>
 	<table border="1" cellspacing="0" cellpadding="0" width="600">
-		<form action="chekcId">
+		<form action="checkId">
 		<tr height="40">
 			 <th>아이디 체크</th>
 			 <td>
