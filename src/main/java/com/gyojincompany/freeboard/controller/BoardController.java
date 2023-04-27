@@ -89,7 +89,13 @@ public class BoardController {
 		
 	}
 	
-	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		
+		session.invalidate();//모든 세션 삭제
+		
+		return "login";
+	}
 	
 	
 }
