@@ -149,5 +149,19 @@ public class BoardController {
 		return "list";
 	}
 	
+	@RequestMapping(value = "/content_view")
+	public String content_view(Model model, HttpServletRequest request) {
+		
+		String fnum = request.getParameter("fnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		FreeBoardDto dto = dao.contentViewDao(fnum);
+		
+		model.addAttribute("content", dto);
+		
+		return "contentView";
+	}
+	
 	
 }
