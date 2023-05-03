@@ -1,6 +1,9 @@
 package com.gyojincompany.freeboard.dao;
 
+import java.util.ArrayList;
+
 import com.gyojincompany.freeboard.dto.FbMemberDto;
+import com.gyojincompany.freeboard.dto.FreeBoardDto;
 
 public interface IDao {
 	
@@ -12,5 +15,7 @@ public interface IDao {
 	//게시판 관련
 	public FbMemberDto getMemberInfo(String mid);//아이디로 검색하여 회원정보 가져오기
 	public void writeDao(String mid, String mname, String ftitle, String fcontent);//게시판 글 쓰기
+	public ArrayList<FreeBoardDto> listDao();//글 목록 모두 가져오기
+	
 	
 }

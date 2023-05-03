@@ -1,5 +1,7 @@
 package com.gyojincompany.freeboard.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gyojincompany.freeboard.dao.IDao;
 import com.gyojincompany.freeboard.dto.FbMemberDto;
+import com.gyojincompany.freeboard.dto.FreeBoardDto;
 
 @Controller
 public class BoardController {
@@ -130,6 +133,18 @@ public class BoardController {
 		dao.writeDao(fid, fname, ftitle, fcontent);
 		
 		return "redirect:list";		
+	}
+	
+	@RequestMapping(value = "/list")
+	public String list(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<FreeBoardDto> dtos = dao.listDao();
+		
+		model.addAttribute("list", dtos);
+		
+		return "list";
 	}
 	
 	
