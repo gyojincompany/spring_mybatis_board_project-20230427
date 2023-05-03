@@ -19,6 +19,7 @@ public interface IDao {
 	public int totalBoardDao();//총 게시글 수 가져오기
 	public FreeBoardDto contentViewDao(String fnum);//특정 번호의 글 1개 가져오기
 	public void deleteDao(String fnum);//특정 번호의 글 1개 삭제하기
+	public void uphitDao(String fnum);//특정 번호의 글 조회수 1 증가 함수
 	
 	
 }

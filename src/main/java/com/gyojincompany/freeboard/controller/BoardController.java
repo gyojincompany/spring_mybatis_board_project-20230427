@@ -156,6 +156,8 @@ public class BoardController {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
+		dao.uphitDao(fnum);//조회수 증가함수(fhit=fhit+1)
+		
 		FreeBoardDto dto = dao.contentViewDao(fnum);
 		
 		String sessionId = (String) session.getAttribute("sessionId");
