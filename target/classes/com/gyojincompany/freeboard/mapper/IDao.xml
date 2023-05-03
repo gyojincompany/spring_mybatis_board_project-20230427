@@ -6,6 +6,7 @@
     
  <mapper namespace="com.gyojincompany.freeboard.dao.IDao">
  
+   <!-- Member 관련 -->
    <insert id="joinMemberDao">
    		INSERT INTO fbmember(mid, mpw, mname, memail) VALUES (#{param1}, #{param2}, #{param3}, #{param4})
    </insert>
@@ -18,6 +19,14 @@
    		SELECT count(*) FROM fbmember WHERE mid=#{param1} AND mpw=#{param2}  
    </select>
    
+   <!-- board 관련 -->
+   <select id="getMemberInfo" resultType="com.gyojincompany.freeboard.dto.FbMemberDto">
+   		SELECT * FROM fbmember WHERE mid=#{param1}
+   </select>
+   
+   <insert id="writeDao">
+   		INSERT INTO freeboard(fnum, fid, fname, ftitle, fcontent, fhit) VALUES(myboard_seq.nextval , #{param1}, #{param2}, #{param3}, #{param4}, 0)
+   </insert>
       
    
  </mapper>

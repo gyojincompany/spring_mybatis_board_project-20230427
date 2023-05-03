@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.gyojincompany.freeboard.dao.IDao;
+import com.gyojincompany.freeboard.dto.FbMemberDto;
 
 @Controller
 public class BoardController {
@@ -98,8 +99,37 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "write_form")
-	public String write_form() {
-		return "writeForm";
+	public String write_form(HttpSession session, Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		String sid = (String)session.getAttribute("sessionId");
+		
+		if(sid == null) {
+			return "redirect:login";
+		} else {
+		
+			FbMemberDto dto = dao.getMemberInfo(sid);
+		
+			model.addAttribute("memberDto", dto);
+		
+			return "writeForm";
+		}
+	}
+	
+	@RequestMapping(value = "/write")
+	public String write(HttpServletRequest request) {
+		
+		String fid = request.getParameter("mid");
+		String fname = request.getParameter("mname");
+		String ftitle = request.getParameter("ftitle");
+		String fcontent = request.getParameter("fcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeDao(fid, fname, ftitle, fcontent);
+		
+		return "redirect:list";		
 	}
 	
 	
