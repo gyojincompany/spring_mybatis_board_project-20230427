@@ -141,8 +141,10 @@ public class BoardController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		ArrayList<FreeBoardDto> dtos = dao.listDao();
+		int total = dao.totalBoardDao();
 		
 		model.addAttribute("list", dtos);
+		model.addAttribute("total", total);//총 게시글수 보내기
 		
 		return "list";
 	}

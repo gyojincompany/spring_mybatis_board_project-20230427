@@ -16,6 +16,7 @@ public interface IDao {
 	public FbMemberDto getMemberInfo(String mid);//아이디로 검색하여 회원정보 가져오기
 	public void writeDao(String mid, String mname, String ftitle, String fcontent);//게시판 글 쓰기
 	public ArrayList<FreeBoardDto> listDao();//글 목록 모두 가져오기
+	public int totalBoardDao();//총 게시글 수 가져오기
 	
 	
 }

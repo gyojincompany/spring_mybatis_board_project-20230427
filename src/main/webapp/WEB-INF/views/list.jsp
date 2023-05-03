@@ -10,6 +10,7 @@
 <body>
 	<h2>자유게시판 글 리스트</h2>
 	<hr>
+	<h3>총 게시글 수 : ${total }</h3>
 	<table border="1" cellspacing="0" cellpadding="0" width="1000">
 		<tr>
 			<th>번호</th>
